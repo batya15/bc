@@ -1,0 +1,6 @@
+.idea
+/src/vendor
+/node_modules
+/build
+/bower_components
+# Created by .ignore support plugin (hsz.mobi)

@@ -1,0 +1,7 @@
+{
+  "path" : {
+    "src" : "src",
+    "build": "build",
+    "bower": "src/bower_components"
+  }
+}

@@ -1,8 +1,14 @@
-import N from './js/module.js';
+import React from './vendor/js/react.js';
 
-var n = new N('bad22tya');
-var r = document.querySelector('.man');
-setTimeout(function() {
-    r.style.width = '600px';
-}, 1500);
-console.log(n.toString(), r);
+let HelloMessage = React.createClass({
+    render: function() {
+        return React.createElement("div", null, "Hello 2 ", this.props.name);
+    }
+});
+
+React.render(
+    React.createElement(HelloMessage, {name: "John"}),
+    document.body
+);
+
+console.log(React);

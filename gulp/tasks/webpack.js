@@ -27,7 +27,9 @@ module.exports = function webPack(done) {
 
     if (done === 'watch') {
         console.info('register watcher webpack compile');
-        watch(FILE_MASK, {verbose: true}, webpackCompile).on('change', browserSync.reload);
+        watch(FILE_MASK, {verbose: true}, function () {
+            webpackCompile(browserSync.reload);
+        });
     } else {
         throw new Error('Wrong call tasks');
     }

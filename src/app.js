@@ -1,14 +1,15 @@
-import React from './vendor/js/react.js';
+import React from 'react';
 
-let HelloMessage = React.createClass({
-    render: function() {
-        return React.createElement("div", null, "Hello 2 ", this.props.name);
+var CommentBox = React.createClass({
+    render () {
+        return (
+            <div className="commentBox" onClick={() => console.log(this)}>
+                Hello, world! I am a CommentBox.
+            </div>
+        );
     }
 });
-
 React.render(
-    React.createElement(HelloMessage, {name: "John"}),
+    <CommentBox />,
     document.body
 );
-
-console.log(React);

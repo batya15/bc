@@ -3,7 +3,7 @@ var gulp = require('gulp'),
     watch = require('gulp-watch'),
     config = require('gulp/config/gulp.json');
 
-var FILE_MASK = config.path.src + '/**/*.{html,css}';
+var FILE_MASK = config.path.src + '/**/*.{html,css,js}';
 
 function copyStatic(done) {
     return gulp.src(FILE_MASK, {base: config.path.src})

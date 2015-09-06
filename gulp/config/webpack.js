@@ -7,7 +7,7 @@ module.exports = {
     resolve: {
         modulesDirectories: ['bower_components'],
         alias: {
-            'react': './aliasVendor/react.js'
+            'react': './vendor/alias/react.js'
         }
     },
     output: {

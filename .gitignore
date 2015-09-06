@@ -1,5 +1,4 @@
 .idea
-/src/vendor
 /node_modules
 /build
 /bower_components

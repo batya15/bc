@@ -5,7 +5,7 @@ var gulp = require('gulp'),
     rimraf = require('rimraf');
 
 module.exports = function clear(done) {
-    return rimraf(config.path.src + '/vendor', function () {
+    return rimraf(config.path.src + '/vendor/js', function () {
         rimraf(config.path.build, done);
     });
 };

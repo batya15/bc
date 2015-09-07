@@ -1,7 +1,5 @@
 .idea
-/src/vendor/js
-/src/vendor/fonts
-/src/vendor/css
+/src/vendor
 /node_modules
 /build
 /bower_components

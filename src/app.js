@@ -1,6 +1,6 @@
 import React from 'react';
 import Login from './components/login';
-import actions from './actions/user';
+import actions from './actions2/user';
 import statusStore from './store/main'
 
 window.ttt = actions;

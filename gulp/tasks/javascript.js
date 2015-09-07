@@ -10,10 +10,10 @@ var gulp = require('gulp'),
 
 var FILE_MASK = [config.path.src + '/**/*.{js,jsx}'];
 
-function javascriptCompile(done) {
+function javascriptCompile(head, done) {
     var filterVendor = gulpFilter(['*', '!' + config.path.src + '/vendor/**/*.{js,jsx}'], {restore: true});
 
-    return gulp.src(FILE_MASK)
+    return head
         .pipe(filterVendor)
         .pipe(sourcemaps.init())
         .pipe(babel({
@@ -31,12 +31,14 @@ function javascriptCompile(done) {
 
 module.exports = function javascript(done) {
     if (typeof done === 'function') {
-        return javascriptCompile(done)
+        return javascriptCompile(gulp.src(FILE_MASK), done);
     }
 
     if (done === 'watch') {
-        console.info('register watcher sass compile');
-        watch(FILE_MASK, {verbose: true}, javascriptCompile).on('change', browserSync.reload);
+        console.info('register watcher javascript compile');
+        javascriptCompile(
+            watch(FILE_MASK, {verbose: true}, browserSync.reload)
+        );
     } else {
         throw new Error('Wrong call tasks');
     }

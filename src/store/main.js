@@ -1,5 +1,5 @@
 import Reflux from 'reflux';
-import actions from 'actions/user.js'
+import actions from 'actions2/user.js'
 
 export default Reflux.createStore({
     init () {

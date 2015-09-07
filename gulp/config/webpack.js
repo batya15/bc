@@ -1,4 +1,3 @@
-var path = require('path');
 var webpack = require("webpack");
 
 module.exports = {
@@ -6,8 +5,10 @@ module.exports = {
     devtool: 'sourcemap',
     resolve: {
         modulesDirectories: ['bower_components'],
+        root: 'src',
         alias: {
-            'react': './vendor/alias/react.js'
+            'react': 'vendor/alias/react.js',
+            'reflux': 'vendor/alias/reflux.js'
         }
     },
     output: {

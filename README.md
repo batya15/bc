@@ -1,1 +1,4 @@
 ### h1
+
+1. JSHINT JSLINT
+2. TESTS

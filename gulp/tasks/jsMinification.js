@@ -5,7 +5,7 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglifyjs');
 
 
-var FILE_MASK = config.path.build + '/app.js';
+var FILE_MASK = config.path.temp + '/app.js';
 
 function jsMinification(done) {
     return gulp.src(FILE_MASK)

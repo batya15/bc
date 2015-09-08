@@ -11,7 +11,7 @@ var gulp = require('gulp'),
     gzip = require('gulp/tasks/gzip'),
     jsMinification = require('gulp/tasks/jsMinification'),
     cssMinification = require('gulp/tasks/cssMinification'),
-//staticMinification = require('gulp/tasks/staticMinification'),
+    staticMinification = require('gulp/tasks/staticMinification'),
     renameBuildPath = require('gulp/util/renameBuildPath'),
     browserSync = require('gulp/util/browserSync');
 
@@ -38,11 +38,10 @@ gulp.task('release', gulp.series(
         config.release,
         'build',
         renameBuildPath,
-        /*staticMinification,*/
+        staticMinification,
         jsMinification,
         cssMinification,
-        gzip/*,
-         RemoveBuildAndRenameRelease*/
+        gzip
     )
 );
 

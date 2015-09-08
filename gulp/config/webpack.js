@@ -1,16 +1,27 @@
-var webpack = require('webpack');
+var webpack = require('webpack'),
+    fs = require('fs'),
+    config = require('gulp/config/gulp.json'),
+    requireJsConfig;
+
+(function () {
+    //todo: this is BIG hack read config file requireJs
+    var require = {
+            config: function (obj) {
+                requireJsConfig = obj;
+            }
+        },
+        fileConfig = fs.readFileSync(config.path.src + '/require-config.es5.js', 'utf8');
+        eval(fileConfig);
+})();
 
 module.exports = {
-    entry: './temp/app.js',
+    entry: 'app.js',
     resolve: {
         root: 'temp',
-        alias: {
-            'react2': 'vendor/js/react',
-            'reflux': 'vendor/js/reflux'
-        }
+        alias: requireJsConfig.paths
     },
     output: {
-        filename: 'app.js'
+        filename: 'bundle.js'
     },
     module: {
         noParse: /.*\/vendor\/.*/

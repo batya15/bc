@@ -1,9 +1,8 @@
 import React from 'react';
-import Login from './components/login';
-import actions from './actions2/user';
-import statusStore from './store/main'
-
-window.ttt = actions;
+import Reflux from 'reflux';
+import Login from 'components/login';
+import actions from 'actions/user';
+import statusStore from 'store/main'
 
 let App = React.createClass({
     mixins: [Reflux.connect(statusStore)],

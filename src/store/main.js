@@ -1,5 +1,5 @@
 import Reflux from 'reflux';
-import actions from 'actions2/user.js'
+import actions from 'actions/user'
 
 export default Reflux.createStore({
     init () {
@@ -11,7 +11,6 @@ export default Reflux.createStore({
     },
     login (flag) {
         console.log(this);
-        var status = flag ? 'ONLINE' : 'OFFLINE';
         this.trigger({page2: flag});
     },
     getInitialState () {

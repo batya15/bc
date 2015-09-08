@@ -11,7 +11,13 @@ var gulp = require('gulp'),
 var FILE_MASK = [config.path.src + '/**/*.{js,jsx}'];
 
 function javascriptCompile(head, done) {
-    var filterVendor = gulpFilter(['*', '!' + config.path.src + '/vendor/**/*.{js,jsx}'], {restore: true});
+    var filterVendor = gulpFilter(
+        [
+            '**/*.{js,jsx}',
+            '!**/*.es5.js',
+            '!vendor/**/*.{js,jsx}'
+        ], {restore: true}
+    );
 
     return head
         .pipe(filterVendor)

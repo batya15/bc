@@ -11,14 +11,12 @@ var gulp = require('gulp'),
     cssMinification = require('./gulp/tasks/cssMinification'),
     browserSync = require('./gulp/util/browserSync');
 
-
 function watchers() {
     browserSync.init();
     statics('watch');
     sass('watch');
     javascript('watch');
 }
-
 
 gulp.task('build', gulp.series(clear, dependenciesInstall, vendorMainFile, statics, sass, javascript));
 //gulp.task('release', gulp.series('build', jsMinification, cssMinification, gzip));

@@ -4,7 +4,6 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     browserSync = require('gulp/util/browserSync'),
     babel = require("gulp-babel"),
-    wrap = require('gulp-wrap-amd'),
     gulpFilter = require('gulp-filter'),
     config = require('gulp/config/gulp.json');
 

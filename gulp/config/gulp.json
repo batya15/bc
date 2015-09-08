@@ -2,6 +2,7 @@
   "path" : {
     "src" : "src",
     "build": "build",
+    "temp": "temp",
     "bower": "src/bower_components"
   }
 }

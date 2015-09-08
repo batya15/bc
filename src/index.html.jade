@@ -1,0 +1,13 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        title Test
+        if (isRelease)
+            ink(rel="stylesheet", href="/styles.css")
+    body
+    if (isRelease)
+        script(src='/app.js')
+    else
+        script(data-main='app', src='/vendor/js/require.js')
+        script(src='/require-config.es5.js')

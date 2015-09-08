@@ -6,17 +6,20 @@ var gulp = require('gulp'),
     autoprefixer = require('autoprefixer'),
     sourcemaps = require('gulp-sourcemaps'),
     browserSync = require('gulp/util/browserSync'),
+    configUtil = require('gulp/util/config'),
     config = require('gulp/config/gulp.json');
 
 var FILE_MASK = [config.path.src + '/**/*.{sass,scss}', '!' + config.path.bower];
 
 function sassTask(done) {
+    var eventName = configUtil.isRelease()?  '_error' : 'error';
+
     return gulp.src(FILE_MASK)
         .pipe(sourcemaps.init())
         .pipe(sass({
             quiet: true,
             includePaths: [config.path.src + '/']
-        }).on('error', sass.logError))
+        }).on(eventName, sass.logError))
         .pipe(postcss([autoprefixer({browsers: ['last 2 version']})]))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(config.path.build))

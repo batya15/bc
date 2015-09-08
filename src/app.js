@@ -7,8 +7,7 @@ import statusStore from 'store/main'
 let App = React.createClass({
     mixins: [Reflux.connect(statusStore)],
     onClick: function () {
-        actions.login(' batya ');
-        console.log('ntya');
+        actions.login('batya');
     },
     render () {
         return (

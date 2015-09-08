@@ -1,16 +1,14 @@
 "use strict";
 var gulp = require('gulp'),
     config = require('gulp/config/gulp.json'),
-    rimraf = require('gulp-rimraf'),
     uglifycss = require('gulp-uglifycss'),
     concatCss = require('gulp-concat-css');
 
 
-var FILE_MASK = config.path.build + '/**/*.css';
+var FILE_MASK = config.path.temp + '/**/*.css';
 
 function cssMinification(done) {
     return gulp.src(FILE_MASK)
-        .pipe(rimraf())
         .pipe(concatCss("styles.css"))
         .pipe(uglifycss())
         .pipe(gulp.dest(config.path.build))

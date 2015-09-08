@@ -3,7 +3,6 @@ import actions from 'actions/user'
 
 export default Reflux.createStore({
     init () {
-        console.log(window.rrr = actions);
         this.listenToMany(actions);
     },
     logout: function () {

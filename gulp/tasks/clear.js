@@ -2,9 +2,11 @@
 
 var gulp = require('gulp'),
     config = require('gulp/config/gulp'),
-    rimraf = require('rimraf');
+    fs = require('fs-extra');
 
 module.exports = function clear(done) {
-    return rimraf(config.path.build, done);
+    fs.removeSync(config.path.build);
+    fs.removeSync(config.path.temp);
+    done()
 };
 

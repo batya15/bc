@@ -22,7 +22,8 @@ function javascriptCompile(head, done) {
         .pipe(filterVendor)
         .pipe(sourcemaps.init())
         .pipe(babel({
-            modules: 'amd'
+            modules: 'amd',
+            moduleIds: true
         }))
         .pipe(sourcemaps.write())
         .pipe(filterVendor.restore)

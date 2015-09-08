@@ -9,7 +9,7 @@ var gulp = require('gulp'),
 
 var FILE_MASK = [config.path.src + '/**/*.js', '!' + config.path.bower];
 
-function webpackCompile(done) {
+module.exports = function webpackCompile(done) {
     return gulp.src(FILE_MASK)
         .pipe(webpack(require('gulp/config/webpack')))
         .pipe(gulp.dest(config.path.build))
@@ -18,19 +18,4 @@ function webpackCompile(done) {
                 done();
             }
         });
-}
-
-module.exports = function webPack(done) {
-    if (typeof done === 'function') {
-        return webpackCompile(done)
-    }
-
-    if (done === 'watch') {
-        console.info('register watcher webpack compile');
-        watch(FILE_MASK, {verbose: true}, function () {
-            webpackCompile(browserSync.reload);
-        });
-    } else {
-        throw new Error('Wrong call tasks');
-    }
 };

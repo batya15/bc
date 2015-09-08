@@ -1,27 +1,18 @@
-var webpack = require("webpack");
+var webpack = require('webpack');
 
 module.exports = {
-    entry: './src/app.js',
-    devtool: 'sourcemap',
+    entry: './temp/app.js',
     resolve: {
-        modulesDirectories: ['bower_components'],
-        root: 'src',
+        root: 'temp',
         alias: {
-            'react': 'vendor/alias/react.js',
-            'reflux': 'vendor/alias/reflux.js'
+            'react2': 'vendor/js/react',
+            'reflux': 'vendor/js/reflux'
         }
     },
     output: {
         filename: 'app.js'
     },
     module: {
-        loaders: [
-            {test: /\.js$/, loader: 'babel', exclude: /(node_modules|bower_components)/, query: {compact: false}}
-        ]
-    },
-    plugins: [
-        new webpack.ResolverPlugin(
-            new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
-        )
-    ]
+        noParse: /.*\/vendor\/.*/
+    }
 };

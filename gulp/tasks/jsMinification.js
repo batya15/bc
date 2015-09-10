@@ -2,12 +2,19 @@
 var gulp = require('gulp'),
     config = require('gulp/config/gulp.json'),
     webpack = require('gulp-webpack'),
+    fs = require('fs'),
     uglify = require('gulp-uglifyjs');
 
 
 var FILE_MASK = config.path.temp + '/app.js';
 
 function jsMinification(done) {
+    fs.writeFileSync(
+        'temp/css.js',
+        'define(function(){return null});',
+        'utf8'
+    );
+
     return gulp.src(FILE_MASK)
         .pipe(webpack(require('gulp/config/webpack')))
         .pipe(uglify())

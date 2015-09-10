@@ -24,7 +24,7 @@ function watchers() {
 }
 
 gulp.task('build', gulp.series(
-        clear,
+        clear.all,
         dependenciesInstall,
         vendorMainFile,
         statics,
@@ -41,6 +41,7 @@ gulp.task('release', gulp.series(
         staticMinification,
         jsMinification,
         cssMinification,
+        clear.temp,
         gzip
     )
 );

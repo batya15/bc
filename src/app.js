@@ -12,6 +12,7 @@ let App = React.createClass({
     render () {
         return (
             <div className="commentBox" onClick={this.onClick}>
+                <Login/>
                 Hello, world! I am{this.state.page2} a CommentBox. {this.state.page}
             </div>
         );

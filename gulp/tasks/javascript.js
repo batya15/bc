@@ -5,6 +5,8 @@ var gulp = require('gulp'),
     browserSync = require('gulp/util/browserSync'),
     babel = require("gulp-babel"),
     gulpFilter = require('gulp-filter'),
+    configUtil = require('gulp/util/config'),
+    through = require('through2'),
     config = require('gulp/config/gulp.json');
 
 var FILE_MASK = [config.path.src + '/**/*.{js,jsx}'];
@@ -26,6 +28,13 @@ function javascriptCompile(head, done) {
             moduleIds: true
         }))
         .pipe(sourcemaps.write())
+        .pipe(through.obj(function(file, enc, cb) {
+            if (configUtil.isRelease()) {
+                file.contents = new Buffer(String(file.contents).replace(/'css!.*'/g, '\'css\''));
+            }
+            this.push(file);
+            cb();
+        }))
         .pipe(filterVendor.restore)
         .pipe(gulp.dest(config.path.build))
         .on('end', function () {

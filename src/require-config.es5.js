@@ -4,5 +4,10 @@ require.config({
     paths: {
         'react': 'vendor/js/react',
         'reflux': 'vendor/js/reflux'
+    },
+    map: {
+        '*' : {
+            'css': 'vendor/js/css'
+        }
     }
 });

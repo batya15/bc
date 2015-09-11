@@ -14,6 +14,8 @@ var webpack = require('webpack'),
         eval(fileConfig);
 })();
 
+var replaceCss = new webpack.NormalModuleReplacementPlugin(new RegExp("^css!.*"), function(m){return m.request = 'css'});
+
 module.exports = {
     entry: 'app.js',
     resolve: {
@@ -24,6 +26,7 @@ module.exports = {
         filename: 'bundle.js'
     },
     module: {
-        noParse: /.*\/vendor\/.*/
-    }
+        noParse: [/.*\/vendor\/.*/]
+    },
+    plugins: [replaceCss]
 };

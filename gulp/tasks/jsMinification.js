@@ -10,8 +10,8 @@ var FILE_MASK = config.path.temp + '/app.js';
 
 function jsMinification(done) {
     fs.writeFileSync(
-        'temp/css.js',
-        'define(function(){return null});',
+        config.path.temp + '/css.js',
+        'define(function(){});',
         'utf8'
     );
 

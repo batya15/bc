@@ -2,13 +2,11 @@
 var gulp = require('gulp'),
     config = require('gulp/config/gulp.json'),
     uglifycss = require('gulp-uglifycss'),
+    cssList = require('gulp/util/cssList'),
     concatCss = require('gulp-concat-css');
 
-
-var FILE_MASK = config.path.temp + '/**/*.css';
-
-function cssMinification(done) {
-    return gulp.src(FILE_MASK)
+module.exports = function cssMinification(done) {
+    return gulp.src(cssList.list())
         .pipe(concatCss("styles.css"))
         .pipe(uglifycss())
         .pipe(gulp.dest(config.path.build))
@@ -17,10 +15,4 @@ function cssMinification(done) {
                 done();
             }
         });
-}
-
-module.exports = function styleMinification(done) {
-    if (typeof done === 'function') {
-        return cssMinification(done)
-    }
 };

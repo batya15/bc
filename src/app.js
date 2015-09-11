@@ -3,6 +3,7 @@ import Reflux from 'reflux';
 import Login from 'components/login';
 import actions from 'actions/user';
 import statusStore from 'store/main'
+import style from 'css!style/style'
 
 let App = React.createClass({
     mixins: [Reflux.connect(statusStore)],

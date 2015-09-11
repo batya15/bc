@@ -8,7 +8,7 @@ var gulp = require('gulp'),
 
 var FILE_MASK = config.path.temp + '/app.js';
 
-function jsMinification(done) {
+module.exports = function jsMinification(done) {
     fs.writeFileSync(
         config.path.temp + '/css.js',
         'define(function(){});',
@@ -24,10 +24,4 @@ function jsMinification(done) {
                 done();
             }
         });
-}
-
-module.exports = function scriptsMinification(done) {
-    if (typeof done === 'function') {
-        return jsMinification(done)
-    }
 };

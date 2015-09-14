@@ -1,20 +1,26 @@
 import React from 'react';
 import Reflux from 'reflux';
-import Login from 'components/login';
-import actions from 'actions/user';
-import statusStore from 'store/main'
-import style from 'css!style/style'
+import actions from 'actions/app';
+import loadingStore from 'store/loading'
+import Loading from 'components/loading/loading';
+
+import normalize from 'css!vendor/styles/normalize'
+import mainCss from 'css!styles/main'
 
 let App = React.createClass({
-    mixins: [Reflux.connect(statusStore)],
-    onClick: function () {
-        actions.login('batya');
-    },
+    mixins: [Reflux.connect(loadingStore)],
     render () {
+        var app;
+        if (this.state.ready) {
+            app = <div>game</div>;
+        } else {
+            setTimeout(()=> {actions.loading('loading', 100);}, 10);
+            app = <Loading total={this.state.total}/>;
+        }
+
         return (
-            <div className="commentBox" onClick={this.onClick}>
-                <Login/>
-                Hello, world! I am{this.state.page2} a CommentBox. {this.state.page}
+            <div className="App">
+                {app}
             </div>
         );
     }

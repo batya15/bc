@@ -7,9 +7,7 @@ var state = {
 };
 
 export default Reflux.createStore({
-    init () {
-        this.listenToMany(actions);
-    },
+    listenables: actions,
     loading: function (action, i) {
         state.total += i;
         if (state.total >= 100) {

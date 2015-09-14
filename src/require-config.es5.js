@@ -3,7 +3,8 @@ require.config({
     baseUrl: '/',
     paths: {
         'react': 'vendor/js/react',
-        'reflux': 'vendor/js/reflux'
+        'reflux': 'vendor/js/reflux',
+        'react-simpletabs': 'vendor/js/react-simpletabs'
     },
     map: {
         '*' : {
